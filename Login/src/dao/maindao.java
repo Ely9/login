@@ -28,7 +28,7 @@ public class maindao {
 
 			conn =DriverManager.getConnection("jdbc:mysql://localhost/contents?serverTimezone=JST","root","1234");
 
-			String sql = "SELECT content,limit_year,limit_month_limit,day,person FROM todo";
+			String sql = "SELECT content,limit_year,limit_month,limit_day,person FROM todo";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 
@@ -36,7 +36,7 @@ public class maindao {
 				String content  = rs.getString("content");
 				String person = rs.getString("person");
 				int limit_year = rs.getInt("limit_year");
-				int limit_month = rs.getInt("limit_mont");
+				int limit_month = rs.getInt("limit_month");
 				int limit_day = rs.getInt("limit_day");
 
 

@@ -1,5 +1,7 @@
 package test;
 
+import java.util.List;
+
 import dao.maindao;
 import model.Content;
 
@@ -10,7 +12,14 @@ public class maindaotest {
 
 
 		maindao dao = new maindao();
-		Content contents = new Content("遊びに行く",2020,9,22,"なな");
+		List<Content> list = dao.findAll();
+
+		for(Content con: list) {
+			System.out.println(con.getContent());
+			System.out.println(con.getLimitYear());
+			System.out.println(con.getLimitMonth());
+			System.out.println(con.getLimitDay());
+		}
 
 
 	}

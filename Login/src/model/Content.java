@@ -36,7 +36,7 @@ public class Content implements Serializable{
 		return limit_month;
 	}
 
-	public int getLimitDatt() {
+	public int getLimitDay() {
 		return limit_day;
 	}
 
