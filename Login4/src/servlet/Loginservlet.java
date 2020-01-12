@@ -50,22 +50,8 @@ public class Loginservlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
-
-
-		//登録
-		request.setCharacterEncoding("UTF-8");
-		String content = request.getParameter("content");
-		String year = request.getParameter("year");
-		String month =  request.getParameter("month");
-		String day = request.getParameter("day");
-		String name = request.getParameter("name");
-
-
-		Content con = new Content(content,year,month,day,name);
 
 
 

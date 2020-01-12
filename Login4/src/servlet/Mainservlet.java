@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Addlogic;
 import model.Content;
-import model.Mainlogic;
 
 /**
  * Servlet implementation class Mainservlet
@@ -35,12 +34,7 @@ public class Mainservlet extends HttpServlet {
 
 
 
-		Mainlogic logic = new Mainlogic();
-		List<Content> list = logic.execute();
-		request.setAttribute("list", list);
-
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/loginOK.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -49,6 +43,29 @@ public class Mainservlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+
+		//登録
+		request.setCharacterEncoding("UTF-8");
+		String content = request.getParameter("content");
+		String year = request.getParameter("year");
+		String month =  request.getParameter("month");
+		String day = request.getParameter("day");
+		String name = request.getParameter("name");
+
+
+		Content con = new Content(content,year,month,day,name);
+
+
+
+		Addlogic add= new Addlogic();
+		add.execute(con);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
+		dispatcher.forward(request, response);
+
+
 
 	}
 

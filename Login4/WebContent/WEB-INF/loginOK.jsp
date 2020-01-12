@@ -24,21 +24,11 @@ List<Content> contentlist = (List<Content>)application.getAttribute("contentlist
 
 ようこそ<%= user.getUserId() %>さん
 
-
-
 <%
-
 for(Content content:contentlist){%>
 
 <center>
-<table border>
-<tr>
-<td>内容</td>
-<td>年</td>
-<td>月</td>
-<td>日付</td>
-<td>実行する人</td>
-</tr>
+<table border cellpadding="50">
 <tr>
 <td><%= content.getContent() %></td>
 <td><%= content.getYear() %></td>

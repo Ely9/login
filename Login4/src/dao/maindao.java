@@ -77,4 +77,48 @@ public class maindao {
 
 
 
+	public boolean create (Content content) {
+
+		Connection conn = null;
+
+
+		try {
+			conn =DriverManager.getConnection("jdbc:mysql://localhost/login?serverTimezone=JST","root","1234");
+
+			String sql="INSERT INTO content(content,year,month,day,name) VALUES(?,?,?,?,?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, content.getContent());
+			pStmt.setString(2, content.getYear());
+			pStmt.setString(3, content.getMonth());
+			pStmt.setString(4, content.getDay());
+			pStmt.setString(5, content.getName());
+
+
+			int result = pStmt.executeUpdate();
+			if(result!=1) {
+				return false;
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+
+
+
+		return true;
+
+	}
+
+
+
 }
