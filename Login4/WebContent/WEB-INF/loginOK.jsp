@@ -41,10 +41,10 @@ for(Content content:contentlist){%>
 </tr>
 <tr>
 <td><%= content.getContent() %></td>
-<td><%= content.getLimitYear() %></td>
-<td><%= content.getLimitMonth() %></td>
-<td><%= content.getLimitDay() %></td>
-<td><%= content.getPerson() %></td>
+<td><%= content.getYear() %></td>
+<td><%= content.getMonth() %></td>
+<td><%= content.getDay() %></td>
+<td><%= content.getName() %></td>
 </tr>
 
 </table>

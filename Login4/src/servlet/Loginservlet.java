@@ -55,6 +55,27 @@ public class Loginservlet extends HttpServlet {
 
 
 
+
+		//登録
+		request.setCharacterEncoding("UTF-8");
+		String content = request.getParameter("content");
+		String year = request.getParameter("year");
+		String month =  request.getParameter("month");
+		String day = request.getParameter("day");
+		String name = request.getParameter("name");
+
+
+		Content con = new Content(content,year,month,day,name);
+
+
+
+
+
+
+
+
+
+		//ログイン
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
@@ -68,7 +89,7 @@ public class Loginservlet extends HttpServlet {
 		boolean result = bo.execute(user);
 
 
-
+		//コンテンツ表示
 		Mainlogic mainlogic = new Mainlogic();
 		List<Content> contentlist= mainlogic.execute();
 		ServletContext application = this.getServletContext();

@@ -26,21 +26,21 @@ public class maindao {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			conn =DriverManager.getConnection("jdbc:mysql://localhost/contents?serverTimezone=JST","root","1234");
+			conn =DriverManager.getConnection("jdbc:mysql://localhost/login?serverTimezone=JST","root","1234");
 
-			String sql = "SELECT content,limit_year,limit_month,limit_day,person FROM todo";
+			String sql = "SELECT * FROM content";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 
 			while(rs.next()) {
 				String content  = rs.getString("content");
-				String person = rs.getString("person");
-				int limit_year = rs.getInt("limit_year");
-				int limit_month = rs.getInt("limit_month");
-				int limit_day = rs.getInt("limit_day");
+				String name = rs.getString("name");
+				String year = rs.getString("year");
+				String month = rs.getString("month");
+				String day = rs.getString("day");
 
 
-				Content cont = new Content(content,limit_year,limit_month,limit_day,person);
+				Content cont = new Content(content,year,month,day,name);
 				list.add(cont);
 
 

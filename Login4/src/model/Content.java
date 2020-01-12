@@ -11,12 +11,12 @@ public class Content implements Serializable{
 
 
 
-	public Content(String content,int limit_year,int limit_month,int limit_day,String person) {
+	public Content(String content,String year,String month,String day,String name) {
 		this.content=content;
-		this.person=person;
-		this.limit_year = limit_year;
-		this.limit_month=limit_month;
-		this.limit_day=limit_day;
+		this.name=name;
+		this.year=year;
+		this.month=month;
+		this.day=day;
 	}
 
 
@@ -24,20 +24,20 @@ public class Content implements Serializable{
 		return content;
 	}
 
-	public String getPerson() {
-		return person;
+	public String getName() {
+		return name;
 	}
 
-	public int getLimitYear() {
-		return limit_year;
+	public String getYear() {
+		return year;
 	}
 
-	public int getLimitMonth() {
-		return limit_month;
+	public String getMonth() {
+		return month;
 	}
 
-	public int getLimitDay() {
-		return limit_day;
+	public String getDay() {
+		return day;
 	}
 
 }

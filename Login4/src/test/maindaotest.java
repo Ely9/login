@@ -16,9 +16,9 @@ public class maindaotest {
 
 		for(Content con: list) {
 			System.out.println(con.getContent());
-			System.out.println(con.getLimitYear());
-			System.out.println(con.getLimitMonth());
-			System.out.println(con.getLimitDay());
+			System.out.println(con.getYear());
+			System.out.println(con.getMonth());
+			System.out.println(con.getDay());
 		}
 
 

@@ -1,0 +1,101 @@
+Connection conn = null;
+
+
+
+try{
+
+
+sql="insert into todo(content.name) values(?,?)";
+
+pStmt.setString(1,content.getContent());
+pStmt.setString(2.content.getName());
+
+}
+
+
+
+jspからパラメータを取得してSQLでINSERTする
+
+
+サーブレットでパラメータ取得
+daoで作ったリストをロジッククラスから持ってきてサーブレットに渡してリストにパラメータを入れる
+リストをスコープに保存
+
+
+
+パラメータを取得
+
+String content = request.getParameter("contetnt");
+Stirng text = request.getParameter("text");
+
+
+Contentとtextをリストに追加
+
+Content content = new Content(content,text);
+Addlogic logic =new Addlogic();
+logic.execute(content);
+
+
+
+
+daoからリストを引っ張ってきてサーブレットでスコープに保存、jspで表示
+
+
+疑問＝リクエストパラメータがどうやってContent.javaに代入されてるのか
+
+→request.setCharacterEncodint("UTF-8");
+
+Stirng name = request.getParmaeter("name");
+String pass = request.getParmaeter("pass");
+
+
+User user = new User(name,pass);
+
+コンストラクターを利用してUser.javaに代入
+
+
+
+
+
+
+
+
+
+String content =request.getParameter("contetnt");
+String text = request.getParameter("text");
+
+Content content  = new Contetnt(content.text);
+
+
+dao.java
+
+sql="insert into todo(content.name) values(?,?)";
+
+pStmt.setString(1,content.getContent());
+pStmt.setString(2.content.getName());
+
+
+Addlogic.java
+
+pulic void execute(Contetnt content){
+dao dao = new dao();
+dao.insert(content);}
+
+
+servlet.java
+
+Addlogic add =new Addlogic();
+add.execute(content);
+
+
+スコープに保存
+List<Content> list = add.execute();
+request.setAttribute("list",list);
+
+
+疑問＝リストはどこで作った物なのか、Maindaoで作ったリストをどうやってAdddaoで使うのか
+
+→Maindao dao = new Maindao();
+List<Content> list = dao.findAll();
+list.add(content);
+
