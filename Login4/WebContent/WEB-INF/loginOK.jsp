@@ -30,7 +30,28 @@ List<Content> contentlist = (List<Content>)application.getAttribute("contentlist
 
 for(Content content:contentlist){%>
 
-<%= content.getContent() %>
+<center>
+<table border>
+<tr>
+<td>内容</td>
+<td>年</td>
+<td>月</td>
+<td>日付</td>
+<td>実行する人</td>
+</tr>
+<tr>
+<td><%= content.getContent() %></td>
+<td><%= content.getLimitYear() %></td>
+<td><%= content.getLimitMonth() %></td>
+<td><%= content.getLimitDay() %></td>
+<td><%= content.getPerson() %></td>
+</tr>
+
+</table>
+
+</center>
+
+
 
 <%} %>
 

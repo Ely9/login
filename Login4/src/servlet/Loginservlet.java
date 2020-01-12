@@ -37,10 +37,6 @@ public class Loginservlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Mainlogic mainlogic = new Mainlogic();
-		List<Content> contentlist = mainlogic.execute();
-		ServletContext application = this.getServletContext();
-		application.setAttribute("contentlist", contentlist);
 
 
 
@@ -70,6 +66,13 @@ public class Loginservlet extends HttpServlet {
 		LoginLogic bo = new LoginLogic();
 
 		boolean result = bo.execute(user);
+
+
+
+		Mainlogic mainlogic = new Mainlogic();
+		List<Content> contentlist= mainlogic.execute();
+		ServletContext application = this.getServletContext();
+		application.setAttribute("contentlist", contentlist);
 
 		if(result) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/loginOK.jsp");

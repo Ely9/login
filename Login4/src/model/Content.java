@@ -6,8 +6,8 @@ public class Content implements Serializable{
 
 
 
-	private String content,person;
-	private int limit_year,limit_month,limit_day;
+	private String content,name;
+	private String year,month,day;
 
 
 
