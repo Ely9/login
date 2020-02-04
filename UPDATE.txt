@@ -1,0 +1,84 @@
+getStringで表示するレコードの識別
+
+
+疑問→リンクタグにgetStringを使う書き方、何をインポートしてメソッドを使うのか
+
+
+sqlと変数を合わせる
+
+sql = "UPDATE Table SET" 更新処理 "WHERE name" = userName;
+
+
+更新処理→point =100 などなので、"Content ="+getParameter("text");
+（全体適用させたい）
+
+
+→"Content ="+getParameter("content")+",name ="+getParameter("name")+......
+
+
+メインのmodelクラスを使う。
+必要なのはdaoとmodel(logic)とサーブレットとjsp
+jsp→更新画面、パラメータを飛ばす
+サーブレット→更新画面とメイン画面へのフォワード、パラメータを受け取ってmodelでdaoに渡す処理
+dao→DB接続、sql実行、結果をリストに格納、切断
+
+
+
+
+
+
+servlet.jsp
+String contnet = request.getParameter("content");
+String name = request.getParameter("name");
+
+Content content= new Content(content,name);
+updatelogic update = new updatelogid();
+update.execute();
+
+forward("/WEB-INF/loginOK");
+
+
+
+dao.java
+
+Connection conn =null;
+
+sql="update ";
+
+
+
+SQLでレコードの更新だけしたい。リストに格納するとかはいらない。
+dao→SQL実行するだけ
+サーブレット→jspの内容をdaoに飛ばす
+logic→リストから飛ばす？
+
+
+jspの内容をサーブレットで受け取ってリストに格納、logicでリストを受け取ってリストを返す、daoでリストを受け取って内容をアップデートする
+
+
+
+update.jsp
+<input type = "text" name="content">
+
+updateservlet.java
+
+String content = request.getParameter("content");
+String name = request.getParameter("name");
+
+List<content> list = new ArrayList<content>();
+
+Content content = new Content(content,name);
+
+list.add(content);
+
+
+dao.jsp
+List<content> list = 
+
+
+
+疑問→サーブレットで受け取ったパラメータをdaoに渡す方法、logicには何を書けばいいのか、daoでリストからどうやってリストの内容を取得するのか
+そもそもリストでパラメータを移動させるべきか
+
+logic→return list
+
