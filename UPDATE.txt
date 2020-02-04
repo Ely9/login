@@ -81,4 +81,85 @@ List<content> list =
 そもそもリストでパラメータを移動させるべきか
 
 logic→return list
+logicはexecuteするもの
+logicで使える方法
+model,daoに値をセットするhealth.setUser(userName);
 
+
+サーブレットで受け取ったパラメータをlogic処理
+
+model.java
+public class model implements Seriarizable{
+private content,name;
+public setContent
+public setName
+public getContent
+public getName
+}
+
+
+
+servlet.java
+model model = new model(content,name);
+logic logic = new logic();
+logic.execute(model);
+
+サーブレットから渡した内容がlogic.javaに渡してdaoで処理される
+
+logic.java
+execute(model model){
+
+dao dao = new dao();
+dao.update(model);
+}
+
+dao.java
+
+sql="update ～";
+
+
+pStmt.setString(1,model.setComtent());
+pStmt.setString(2.model.setName());
+
+
+
+
+
+jspリンクとテーブルの内容と表示するレコードの内容を合わせる方法
+
+
+<a href="<%= content.getContent()%>">
+
+
+・テーブルのtd,trにclass,nameを一つずつ設定しjsでデータを受け取る
+
+name を設定するとしたらfor文の変数を設定する
+か、それと同じ方法で設定する
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+ 
+    $("#btn").click(function(){
+ 
+        $.ajax({
+            type: "POST",
+		//POST送信を行うファイル名を指定する
+            url: "ajax.php",
+            data: {
+		//ここに送信するデータを設定
+		//'user_id':22
+
+                "page": 2
+            },
+            success: function(j_data){
+ 
+                // 処理を記述
+ 
+            }
+        });
+ 
+    });
+ 
+});
+</script>
