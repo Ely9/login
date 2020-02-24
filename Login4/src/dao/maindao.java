@@ -80,9 +80,16 @@ public class maindao {
 	public boolean create (Content content) {
 
 		Connection conn = null;
-
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
 
 		try {
+
+
 			conn =DriverManager.getConnection("jdbc:mysql://localhost/login?serverTimezone=JST","root","1234");
 
 			String sql="INSERT INTO content(content,year,month,day,name) VALUES(?,?,?,?,?)";

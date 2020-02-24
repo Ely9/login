@@ -24,22 +24,26 @@ List<Content> contentlist = (List<Content>)application.getAttribute("contentlist
 
 ようこそ<%= user.getUserId() %>さん
 
+
+<br><br><a href ="update.jsp">登録</a><form ><input type="text" name="text"><input type="submit" value="検索"></form>
+
 <%
 for(Content content:contentlist){%>
 
-<center>
-<table border cellpadding="50">
+
+<table border>
 <tr>
 <td><%= content.getContent() %></td>
 <td><%= content.getYear() %></td>
 <td><%= content.getMonth() %></td>
 <td><%= content.getDay() %></td>
 <td><%= content.getName() %></td>
+<td><a href="">更新</a></td>
+<td><a href="">削除</a></td>
+
 </tr>
 
 </table>
-
-</center>
 
 
 
