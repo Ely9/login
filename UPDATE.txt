@@ -163,3 +163,110 @@ $(function() {
  
 });
 </script>
+
+
+
+
+
+jspに表示させたレコードとリンクとリンク先のレコードを一致させる方法
+→PrimaryKeyで一致させる
+
+
+テーブルデータに数字を付ける
+jspリンクをSQLで書く
+表示するレコードをキーで持ってくる
+
+
+リンクにSQLを使うのが謎
+
+
+SQLはdaoに書く
+
+
+top.jsp
+
+<a href = "サーブレットを介してdaoに繋げる">更新</a>
+
+
+updatedao.java
+
+
+String key = request.getParameter("id");
+
+sql="select from table.table value"
+
+
+SQLでレコード（ID付き）を取得する
+
+
+jspに書いたリンクとdaoに書いたSQLを繋げる方法を考える
+
+
+リンクに適応できる形式によって分かる
+
+daoから何を持ってくるのか→レコードのID
+
+新しくdao、サーブレットを作る？
+元々あったdaoの書き方を変える
+
+update.daoの使い道→レコードの更新、IDの取得
+
+メソッドを2個使うならmodel.java、サーブレットの書き方も変わる
+
+SQLにupdateを使うメソッドとselectを使うメソッドを作る
+
+updateメソッドを操作するmodelとサーブレット、selectメソッドを操作するmodelとサーブレット
+
+updateメソッド
+
+sql="update ";
+
+
+pStmt.setString(1,model.setComtent());
+pStmt.setString(2.model.setName());
+
+
+selectメソッド
+
+List<key> keylist = new ArrayLyst<key>();
+
+
+sql="select";
+
+while(rs.next()){
+String id = rs.getString("primary_key");
+
+Id id = new Id(primary_key);
+keylist.add(id);
+}
+
+
+selectmodel.java
+
+puclic List<key> execute(){
+
+updatedao dao = new updatedao();
+List<key> keylist = dao.selectmethod();
+
+return keylist;
+}
+
+
+servlet.java
+
+リストを取得してスコープに保存
+
+selectmodel model = new selectmodel();
+List<key> list = model.execute();
+request.setAttribute("list",list);
+
+
+update.jsp
+
+id id = (id)seission.getAttribute("list");
+
+<a href= "id.getPrimaryKey()">更新</a>
+
+
+
+課題：検索
