@@ -267,6 +267,116 @@ id id = (id)seission.getAttribute("list");
 
 <a href= "id.getPrimaryKey()">更新</a>
 
+レコードとリンクはPrimarykeyで一致させたら良い
+
+UPDATE.jspでtop.jspに表示されてるレコードの内容を更新したい。
+パラメータ
+content,year,month,date,name
+
+update.jspからパラメータをservlet.javaに渡す
+servlet.javaでパラメータを受け取って処理（一応スコープに保存）
+
+処理の内容：受け取ったパラメータをリストに入れてdaoに渡す
+List<content> list = new ArrayList<contetnt>();
+list.add(beans);
+
+daoで受け取ったリストをgetArray
+todo：getArrayの使い方を把握する
+
+ArrayListの使い方
+
+List<String> list = new ArrayList<String>();
+list.add("1");
+list.add("2");
+list.add("3");
+System.out.println(list);
+
+
+listの内容を抽出するには
+System.out.println(list.get(2));//「3」が出てくる
+格納→list.add();　抽出→list.get();
+
+Listの種類としてArrayListがある。
+
+if(list.equals()){
+}
+
+
+list.add();
+Javaが持ってるクラス、インターフェースへのメソッドを呼び出す
+
+
+コレクション
+コレクション→List,Set,Map
+
+
+
+
 
 
 課題：検索
+
+
+
+必要なクラス
+beansmodel.java
+logicmodel.java
+servlet.java
+updatedao.java
+
+update.jsp
+top.jsp
+
+
+//////////////
+beans.java
+
+padage model:
+import java.io.Serializable;
+
+public class Beans implements Serializable{
+
+private String content,name,year,month,date;
+
+public Beans(){}
+
+public Beans(String content,String year,String month,String date,String name){
+this.content=content;
+this.year=year;
+this.month=month;
+this.date=date;
+this.name=name;
+}
+
+public String getContent(){
+return content;
+}
+
+public String getName(){
+return name;
+}
+
+public String getYear(){
+return year;
+}
+
+public String getMonth(){
+return month;
+}
+
+public String getDate(){
+return date;
+}
+
+/////////////
+logic.java
+
+pacage model;
+impoer java.io.Seriarizable;
+
+public class Logcic{
+public List<content> execute(Beans be){
+
+Updatedao dao = new Updatedao();
+
+
