@@ -8,15 +8,21 @@ public class Content implements Serializable{
 
 	private String content,name;
 	private String year,month,day;
+	private int id;
 
 
 
-	public Content(String content,String year,String month,String day,String name) {
+	public Content(String content,String year,String month,String day,String name,int id) {
+		this.id=id;
 		this.content=content;
 		this.name=name;
 		this.year=year;
 		this.month=month;
 		this.day=day;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 

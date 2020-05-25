@@ -18,16 +18,16 @@ import model.Addlogic;
 import model.Content;
 
 /**
- * Servlet implementation class Mainservlet
+ * Servlet implementation class Updateservlet
  */
-@WebServlet("/Mainservlet")
-public class Mainservlet extends HttpServlet {
+@WebServlet("/Updateservlet")
+public class Updateservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Mainservlet() {
+    public Updateservlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,19 +37,12 @@ public class Mainservlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
-		dispatcher.forward(request, response);
-
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 
 		//登録
 		request.setCharacterEncoding("UTF-8");
@@ -65,7 +58,7 @@ public class Mainservlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn =DriverManager.getConnection("jdbc:mysql://localhost/login?serverTimezone=JST","root","1234");
-			String sql = "select * from 'contents'";
+			String sql = "INSERT INTO login.contents VALUES()'";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 			if(rs.next()) {
@@ -87,9 +80,6 @@ public class Mainservlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 		dispatcher.forward(request, response);
-
-
-
 	}
 
 }

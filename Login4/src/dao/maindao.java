@@ -28,11 +28,12 @@ public class maindao {
 
 			conn =DriverManager.getConnection("jdbc:mysql://localhost/login?serverTimezone=JST","root","1234");
 
-			String sql = "SELECT * FROM content";
+			String sql = "SELECT * FROM contents";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			ResultSet rs = pStmt.executeQuery();
 
 			while(rs.next()) {
+				int id = rs.getInt("id");
 				String content  = rs.getString("content");
 				String name = rs.getString("name");
 				String year = rs.getString("year");
@@ -40,7 +41,7 @@ public class maindao {
 				String day = rs.getString("day");
 
 
-				Content cont = new Content(content,year,month,day,name);
+				Content cont = new Content(content,year,month,day,name,id);
 				list.add(cont);
 
 

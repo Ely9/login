@@ -6,6 +6,7 @@
 
 User user = (User) session.getAttribute("loginuser");
 
+
 List<Content> contentlist = (List<Content>)application.getAttribute("contentlist");
 
 
